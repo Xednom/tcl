@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Profile</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <h1>Profile</h1>
+  <img src="{{ user.userprofile.image.url }}" class="img-responsive">
+  <p>Username: {{user}}</p>
+  <p>First name: {{user.first_name}}</p>
+  <p>Last name: {{user.last_name}}</p>
+  <p>Email: {{user.email}}</p>
+  <p>Address: {{ user.userprofile.address }}</p>
+  <a href="{% url 'ordering:edit_profile' %}" class="btn btn-primary" value="Submit">Edit</a>
+
+</div>
+
+{% endblock %}

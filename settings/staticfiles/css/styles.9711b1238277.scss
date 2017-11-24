@@ -1,0 +1,358 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+//Variables
+$primary-color: #30a5ff;
+$navbar-color1: #438eb9;
+$navbar-color2: #404040;
+$primary-color-hover: #50b3ff;
+$lightest-color-gray: #f2f2f2;
+
+body {
+  background-color: $lightest-color-gray;
+  background-size: 1950px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center 38%;
+}
+
+.navbar {
+  border-radius: 0;
+  position: fixed;
+  width: 100%;
+  background-color: $navbar-color2;
+}
+
+.navbar-left {
+  .brand-logo{
+    height: 50px;
+  }
+
+}
+
+#navbar {
+  .nav, .navbar-nav, li, a {
+    color: white;
+  }
+}
+
+.modal, .modal-bg {
+  background: transparent;
+}
+
+.modal-head {
+  color: white;
+}
+
+#id_new_password1, #id_new_password2 {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.button-cancel {
+  margin-top: 10px;
+}
+
+.navbar-brand {
+  h3 {
+    margin-top: -2px;
+    margin-left: -2px;
+    color: white;
+  }
+}
+
+.tcl-container {
+  .row {
+    .login-form {
+      padding-top: 20px;
+      padding-left: 250px;
+      width: 75%;
+    }
+  }
+}
+
+.inventory-container {
+  width:83%;
+  padding-top: 75px;
+  padding-left: 15px;
+  margin-left: 317.833px;
+  }
+
+.detail-container {
+  width:83%;
+  padding-top: 75px;
+  margin-left: 317.833px;
+}
+
+.review-container {
+  padding-top: 64px;
+}
+
+.inventory-detail-container {
+  width: 83%;
+  margin-left: 317px;
+  margin-top: 60px;
+}
+
+.login-page, .register-page, .forgotpassword-page, .resetpasswordconfirm-page, .resetpasswordcomplete-page, .resetpassworddone-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+.register-success-container {
+  padding-top: 75px;
+}
+
+.success-container-usercontainer {
+  padding-top: 50px;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin-top: 85px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+
+  input {
+      font-family: "Roboto", sans-serif;
+      outline: 0;
+      background: #f2f2f2;
+      width: 100%;
+      border: 0;
+      margin: 0 0 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+  .tcl-username, .tcl-password, .tcl-last_name, .tcl-first_name, .tcl-password1, .tcl-password2 {
+      font-family: "Roboto", sans-serif;
+      outline: 0;
+      background: #f2f2f2;
+      width: 100%;
+      border: 0;
+      margin: 0 0 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+  button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+
+    :hover, :active, :focus {
+      background: #43A047;
+  }
+}
+
+ .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+    a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+}
+
+.form .register-form {
+  display: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+
+  :before, :after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .info {
+      margin: 50px auto;
+      text-align: center;
+
+      h1 {
+        margin: 0 0 15px;
+        padding: 0;
+        font-size: 36px;
+        font-weight: 300;
+        color: #1a1a1a;
+      }
+
+      span {
+        color: #4d4d4d;
+        font-size: 12px;
+          a {
+           color: #000000;
+           text-decoration: none;
+         }
+         .fa {
+           color: #EF3B3A;
+         }
+       }
+    }
+  }
+}
+
+.alert {
+  margin-top: 10px;
+  margin-right:10px;
+  margin-left: 10px;
+  .close {
+    height: 5px;
+    width: 5px;
+    right: 10px;
+    top: 10px;
+  }
+}
+.sidebar {
+  position: fixed;
+  top: 51px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  border-right: 1px solid #eee;
+  background-color: white;
+
+  .nav {
+    margin-bottom: 20px;
+  }
+
+  .nav-item {
+    width: 100%;
+
+    a:link {
+      color: #000000;
+    }
+
+    a:hover {
+      background-color: $navbar-color2!important;
+      color: #fff;
+    }
+
+    a:active {
+      background-color: $navbar-color2!important;
+    }
+  }
+
+  .nav-item + .nav-item {
+    margin-left: 0;
+  }
+
+  .nav-link {
+    border-radius: 0;
+  }
+
+}
+// fm modal
+.fm-modal {
+  .modal-content {
+    margin: 0;
+    width: auto;
+    background-clip: border-box;
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100%;
+    padding: 0 20px 0;
+  }
+  .modal-head {
+    font-size: 2.4em;
+    text-align: center;
+  }
+  .modal-buttons {
+    text-align: left;
+    padding-left: 20px;
+  }
+  .close-modal {
+    background-color: transparent;
+    cursor: pointer;
+    height: 75px;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    width: 75px;
+  }
+  .close-modal:hover {
+    opacity: 0.3;
+  }
+  .close-modal .lr {
+    background-color: #222;
+    height: 75px;
+    margin-left: 35px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    width: 1px;
+    z-index: 1051;
+  }
+  .close-modal .lr .rl {
+    background-color: #ffffff;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    width: 1px;
+    z-index: 1052;
+  }
+
+  .button-close {
+    height: 75px;
+    width: 75px;
+  }
+
+  .modal-loader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #000;
+    opacity: 0.6;
+    filter: alpha(opacity=80);
+    z-index: 1053;
+  }
+  .modal-loader-img {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -32px 0 0 -32px;
+  }
+}

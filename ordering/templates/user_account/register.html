@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Register</title>
+{% endblock %}
+{% block body %}
+<!--<div class="container-fluid">
+   <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+         <div class="panel panel-default">
+           <div class="panel-body">
+             <div class="form-group">
+                <h1>Register</h1>
+                <form method="post">
+                  {% csrf_token %}
+                   {% for field in form %}
+                  <p>
+                      {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text }}</small>
+                      {% endif %}
+                      {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                      {% endfor %}
+                  </p>
+                   {% endfor %}
+                   {{ form.username }}<br>
+                   {{ form.first_name }}<br>
+                   {{ form.last_name }}<br>
+                   {{ form.password1 }}<br>
+                   {{ form.password2 }}<br>
+                   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+             </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>-->
+<div class="register-page">
+  <div class="form register-form">
+    <form id="register-form" action="{% url 'ordering:register' %}" class="form-signin" method="post" autocomplete="off">{% csrf_token %}
+        {% include 'messages/messages.html' %}
+         {% for field in form %}
+                  <p>
+                      {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text }}</small>
+                      {% endif %}
+                      {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                      {% endfor %}
+                  </p>
+         {% endfor %}
+      {{ form.username }}
+      {{ form.first_name }}
+      {{ form.last_name }}
+      {{ form.email }}
+      {{ form.password1 }}
+      {{ form.password2 }}
+      <button type="submit">register</button>
+      <a href="{% url 'ordering:login' %}" class="button button-cancel">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+

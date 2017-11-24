@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block inventorys_active %}active{% endblock %}
+{% block head %}<title>Inventory menu</title>{% endblock %}
+{% block body %}
+<div class="container inventory-container">
+      <div class="panel panel-default">
+        <div class="panel panel-header" style="padding-left: 25px;">
+          {% include 'messages/messages.html' %}
+          <h3 class="inventory-title">Inventory Informations</h3>
+          <a href="{% url 'ordering:create_inventory' %}" class="fm-create btn btn-primary" data-fm-head="Add new product" data-fm-callback="reload">Create new</a>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <div class="table-responsive">
+              <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Stock In</th>
+                  <th>Stock Out</th>
+                  <th>Balance</th>
+                  <th>Particulars</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if all_inventorys %}
+                {% for inventory in all_inventorys %}
+                <tr>
+                  <td>{{ inventory.product }}</a></td>
+                  <td>{{ inventory.stock_in }}</td>
+                  <td>{{ inventory.stock_out }}</td>
+                  <td>{{ inventory.balance }}</td>
+                  <td>{{ inventory.particulars }}</td>
+                  <td>
+                    <a href="{% url 'ordering:inventory_detail' inventory.id %}" class="btn btn-primary glyphicon glyphicon-search btn-sm" role="button"></a>
+                    <a href="{% url 'ordering:delete_inventory' inventory.id %}" class="fm-delete btn btn-danger glyphicon glyphicon-trash btn-sm" data-fm-head="Delete this product?" data-fm-callback="reload"></a>
+                    <a href="{% url 'ordering:update_inventory' inventory.id %}" class="fm-update btn btn-warning glyphicon glyphicon-edit btn-sm" data-fm-head="Update this product?" data-fm-callback="reload"></a>
+
+                  </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                  <td colspan="7" class="text-center bg-warning">No products in the inventory</td>
+                </tr>
+                {% endif %}
+              </tbody>
+              </table>
+            {% if is_paginated %}
+              <ul class="pagination">
+                {% if page_obj.has_previous %}
+                  <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                  {% if page_obj.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                  {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+              </ul>
+            {% endif %}
+                <div class="panel panel-footer">
+                    <span><strong>{{ page_obj.paginator.count }}</strong> total products in the inventory.</span>
+                </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block head %}<title>Dropship details</title>{% endblock %}
+{% block body %}
+<div class="container detail-container">
+      <div class="panel panel-default">
+        <div class="panel panel-header">
+          <div class="row row-button" style="padding-left: 25px;">
+            <h3>Order Informations</h3>
+          <a href="{% url 'ordering:order_create' %}" class="fm-create btn btn-primary" data-fm-head="Add new order" data-fm-callback="reload">Create new</a>
+              <form method="GET">{% csrf_token %}
+                <div class="form-group search-group">
+                    <input type="search" class="input-medium search-query" autocomplete="off" placeholder="Search last name..." name="q">
+                    <button type="submit" class="btn">Search</button>
+                </div>
+            </form>
+          </div>
+        </div>
+        <div class="panel-body">
+          {% include 'messages/messages.html' %}
+          <ul>
+            <div class="table-responsive">
+              <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>User</th>
+                  <th>Shipment Provider</th>
+                  <th>Name of Recipient</th>
+                  <th>Address</th>
+                  <th>Barangay</th>
+                  <th>City/Municipality</th>
+                  <th>Zip Code</th>
+                  <th>Province</th>
+                  <th>Phone</th>
+                  <th>Quantity</th>
+                  <th>Order</th>
+                  <th>Special Instructions</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if all_order %}
+                {% for order in all_order %}
+                <tr>
+                  <td>{{ order.date }}</td>
+                  <td>{{ order.ordered_by }}</td>
+                  <td>{{ order.shipment_provider }}</td>
+                  <td>{{ order.last_name }}, {{ order.first_name }} {{ order.middle_name }}</td>
+                  <td>{{ order.address }}</td>
+                  <td>{{ order.barangay }}</td>
+                  <td>{{ order.city_and_municipality }}</td>
+                  <td>{{ order.zip_code }}</td>
+                  <td>{{ order.province }}</td>
+                  <td>{{ order.phone }}</td>
+                  <td>{{ order.quantity }}</td>
+                  <td>{{ order.order }}</td>
+                  <td>{{ order.special_instructions }}</td>
+                  <td>{{ order.status }}</td>
+                  <td><a href="{% url 'ordering:order_delete' order.id %}" class="fm-delete btn btn-danger glyphicon glyphicon-trash btn-sm" data-fm-head="Delete this order?" data-fm-callback="reload"></a></td>
+                  <td><a href="{% url 'ordering:order_update' order.id %}" class="fm-update btn btn-warning glyphicon glyphicon-edit btn-sm" data-fm-head="Update this order?" data-fm-callback="reload"></a></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                  <td colspan="14" class="text-center bg-warning">No orders</td>
+                </tr>
+                {% endif %}
+              </tbody>
+              </table>
+            {% if is_paginated %}
+              <ul class="pagination">
+                {% if page_obj.has_previous %}
+                  <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                  {% if page_obj.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                  {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+              </ul>
+            {% endif %}
+            <div class="panel panel-footer">
+                    <span><strong>{{ page_obj.paginator.count }}</strong> total order count.</span>
+            </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+</div>
+
+{% endblock %}

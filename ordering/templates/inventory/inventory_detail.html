@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block inventorys_active %}active{% endblock %}
+{% block head %}<title>Inventory details</title>{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row">
+    <!--<div class="col-sm-4 col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a href="{% url 'ordering:inventory_menu' %}">
+                    {% if inventory.product_logo %}
+                        <img src="{{ inventory.product_logo.url }}" class="img-responsive">
+                    {% else %}
+                        <h3>No image to display</h3>
+                    {% endif %}
+                </a>
+                <h1><small>{{ inventory.product }}</small></h1>
+                <h2>{{ inventory.particulars }}</h2>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="col-sm-8 col-md-9 inventory-detail-container">
+
+        <ul class="nav nav-pills" style="margin-bottom: 10px;">
+          <li role="presentation" class="active"><a href="{% url 'ordering:inventory_menu' %}">View All</a></li>
+        </ul>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <h3>Product Information</h3>
+
+                {% if error_message %}
+                    <p><strong>{{ error_message }}</strong></p>
+                {% endif %}
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Stock in</th>
+                        <th>Stock Out</th>
+                        <th>Balance</th>
+                        <th>Particulars</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ inventory.stock_in}}</td>
+                            <td>{{ inventory.stock_out}}</td>
+                            <td>{{ inventory.total_balance}}</td>
+                            <td>{{ inventory.particulars}}</td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

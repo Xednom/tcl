@@ -1,0 +1,81 @@
+  <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    {% block head %}<title>Base template</title>{% endblock %}
+    {% load static %}
+    {% load compress %}
+    {% compress css %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+    <link rel="stylesheet" type="text/js" href="{% static 'js/login-form.js' %}"/>
+    {% endcompress %}
+    <link rel="shortcut icon" href="{% static 'img/TCL_Logo_Only_Inv_64px.png' %}">
+    {% compress js inline %}
+      <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% endcompress %}
+  </head>
+  <body background="{% static 'img/TCL_Logo.jpg' %}">
+    {% block navbar %}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              <a class="navbar-left">
+                 <img src="{% static 'img/TCL_Logo_Only_64px.png' %}" class="brand-logo">
+                </a>
+                <a class="navbar-brand">
+                 <h3>TCL Ordering</h3>
+                </a>
+              </div>
+
+              <div id="navbar" class="navbar-collapse collapse">
+                  {% if user.is_superuser %}
+                {% elif user.is_authenticated %}
+                  <ul class="nav navbar-nav">
+                    <li><a href="{% url 'ordering:order_create' %}" class="fm-create" data-fm-head="Add new order" data-fm-callback="reload">Add order</a></li>
+                    <li><a href="{% url 'ordering:order_history' %}">Review Page</a></li>
+
+                  </ul>
+
+                  <ul class="nav navbar-nav navbar-right">
+                      <li><a href="{% url 'ordering:logout' %}">Logout</a></li>
+                  </ul>
+                 {% elif user.is_superuser %}
+                {% endif %}
+              </div>
+            </div>
+        </div>
+    </nav>
+  {% endblock %}
+  {% block sidebar %}
+    {% if user.is_superuser %}
+      {% include 'dashboard/dashboard.html' %}
+    {% endif %}
+  {% endblock sidebar %}
+    {% block body %}{% endblock %}
+    {% include "modal/modal.html" %}
+    {% compress js inline %}
+        <script type="text/javascript">
+            $(function() {
+                $.fm({debug: true});
+            });
+        </script>
+
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% endcompress %}
+  </body>
+</html>

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Order History</title>
+{% endblock %}
+{% block body %}
+<div class="container review-container">
+  <div class="table">
+    <div class="col-md-12 col-md-12">
+        <div class="panel panel-header"><h3>Review page</h3></div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul>
+            <table class="table">
+            <thead>
+              <tr>
+                  {% include 'messages/messages.html' %}
+                <th>Date</th>
+                  <th>User</th>
+                  <th>Shipment Provider</th>
+                  <th>Name of Recipient</th>
+                  <th>Address</th>
+                  <th>Barangay</th>
+                  <th>City/Municipality</th>
+                  <th>Zip Code</th>
+                  <th>Province</th>
+                  <th>Phone</th>
+                  <th>Quantity</th>
+                  <th>Order</th>
+                  <th>Special Instructions</th>
+                  <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if user_order %}
+              {% for order in user_order %}
+              <tr>
+                <td>{{ order.date }}</td>
+                  <td>{{ order.ordered_by }}</td>
+                  <td>{{ order.shipment_provider }}</td>
+                  <td>{{ order.last_name }}, {{ order.first_name }} {{ order.middle_name }}</td>
+                  <td>{{ order.address }}</td>
+                  <td>{{ order.barangay }}</td>
+                  <td>{{ order.city_and_municipality }}</td>
+                  <td>{{ order.zip_code }}</td>
+                  <td>{{ order.province }}</td>
+                  <td>{{ order.phone }}</td>
+                  <td>{{ order.quantity }}</td>
+                  <td>{{ order.order }}</td>
+                  <td>{{ order.special_instructions }}</td>
+                  <td>{{ order.status }}</td>
+              </tr>
+              {% endfor %}
+              {% else %}
+              <h1>You don't have any orders.</h1>
+              {% endif %}
+            </tbody>
+            </table>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

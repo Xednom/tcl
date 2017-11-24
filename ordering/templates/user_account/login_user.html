@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Login</title>
+{% endblock %}
+{% block sidebar %}
+{% endblock sidebar %}
+{% block body %}
+<div class="login-page">
+  <div class="form">
+    <form id="login-form" class="form-signin" action="{% url 'ordering:login' %}" method="post" autocomplete="off">{% csrf_token %}
+      {% include 'messages/messages.html' %}
+      <input class="tcl-username" type="text" name="username" placeholder="Username" autocomplete="off" required/>
+      <input class="tcl-password" type="password" name="password" placeholder="Password" autocomplete="off" required/>
+      <button type="submit">login</button>
+      <p class="message">Not registered? <a href="{% url 'ordering:register' %}">Create an account</a></p>
+      <p class="message">Forgot your <a href="{% url 'ordering:reset_password' %}">password</a>?</p>
+
+    </form>
+  </div>
+</div>
+{% endblock body %}

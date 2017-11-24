@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block head %}<title>Orer successful</title>{% endblock %}
+
+{% block body %}
+<div class="container register-success-container">
+  <h2>You successfully registered to the system!</h2>
+  Login&nbsp<a href="{% url 'ordering:login' %}">here</a>
+</div>
+
+{% endblock %}
