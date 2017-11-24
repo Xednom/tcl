@@ -1,3 +1,3 @@
-web: gunicorn systems.wsgi --log-file -
-web: gunicorn systems.wsgi --preload
-web: gunicorn systems.wsgi --worker-class gevent
+web: gunicorn tclordering.wsgi --log-file -
+web: gunicorn tclordering.wsgi --preload
+web: gunicorn tclordering.wsgi --worker-class gevent
