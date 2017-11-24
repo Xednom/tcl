@@ -40,7 +40,8 @@ MANAGERS = ADMINS
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'de(%e__^s2=s&*gfra1=y@46()*1g(d0=1awmid3gy49=2!raq')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'SOME+RANDOM+KEYde(%e__^s2=s&*gfra1=y@46()*1g(d0=1awmid3gy49=2!raq')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
