@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 *.pyo
 *.pyc
+.vscode
 .idea
 settings/local.py
 bin
