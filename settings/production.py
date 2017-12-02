@@ -127,20 +127,20 @@ ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
-        # MYSQL connection
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'tclordering$tcl',
-        # 'USER': 'tclordering',
-        # 'PASSWORD': 'tcladmin',
-        # 'HOST': 'tclordering.mysql.pythonanywhere-services.com',
-        #'PORT': '',
-        # POSTGRESQL connection for heroku
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tcl',
-        'USER': 'tcladmin',
-        'PASSWORD': 'tcl',
-        'HOST': 'localhost',
+         # MYSQL connection
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'tclordering$tcl',
+         'USER': 'tclordering',
+         'PASSWORD': 'tcladmin',
+         'HOST': 'tclordering.mysql.pythonanywhere-services.com',
         'PORT': '',
+        # POSTGRESQL connection for heroku
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'tcl',
+        # 'USER': 'tcladmin',
+        # 'PASSWORD': 'tcl',
+        # 'HOST': 'localhost',
+        # 'PORT': '',
     }
 }
 
