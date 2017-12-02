@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'admin_tools.menu',
     'admin_tools.dashboard',
     'ordering.apps.OrderingConfig',
-    'static.apps.StaticConfig',
+    'static',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
