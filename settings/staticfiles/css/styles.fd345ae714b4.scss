@@ -9,7 +9,7 @@ $lightest-color-gray: #f2f2f2;
 
 body {
   background-color: $lightest-color-gray;
-  background-size: 1950px;
+  background-size: 1850px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center 38%;
@@ -37,7 +37,7 @@ body {
 
 .modal, .modal-bg {
   background: transparent;
-})
+}
 
 .modal-head {
   color: white;

@@ -37,7 +37,7 @@ body {
 
 .modal, .modal-bg {
   background: transparent;
-}
+})
 
 .modal-head {
   color: white;
@@ -117,6 +117,10 @@ body {
 
 .success-container-usercontainer {
   padding-top: 50px;
+}
+
+.success-home-container {
+  margin-top: 65px;
 }
 
 .form {
