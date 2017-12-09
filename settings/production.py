@@ -191,7 +191,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'theme/img')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join('staticfiles'),
+    os.path.join('static'),
  )
 
 # Simplified static file serving.
