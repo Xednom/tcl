@@ -3,6 +3,7 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from .models import Order, Inventory
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.db.models import F
 
 
 class RegistrationForm(UserCreationForm):
@@ -70,7 +71,6 @@ class RegistrationForm(UserCreationForm):
             if commit:
                 user.save()
                 user.date_joined.save()
-
             return user
 
 
@@ -313,4 +313,27 @@ class InventoryForm(forms.ModelForm):
             'stock_out',
             'balance',
             'particulars'
+        )
+
+class InventoryStockInForm(forms.ModelForm):
+    stock_in = forms.CharField(required=True, widget=forms.NumberInput(
+        attrs={
+            'class': 'form-control',
+            'type': 'number'
+        }
+    ))
+
+    balance = forms.CharField(required=True, widget=forms.NumberInput(
+        attrs={
+            'class': 'form-control',
+            'type': 'number'
+        }
+    ))
+
+    class Meta:
+        model = Inventory
+        fields = (
+            'product',
+            'stock_in',
+            'balance'
         )

@@ -11,7 +11,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth import (login as auth_login, logout as auth_logout, authenticate)
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.db.models import Count
+from django.db.models import Count, ExpressionWrapper, F
 
 from django.shortcuts import render
 from django.views.generic import (
@@ -28,7 +28,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Order, Inventory
-from .forms import RegistrationForm, EditProfileForm, OrderForm, OrderEditForm, InventoryForm
+from .forms import RegistrationForm, EditProfileForm, OrderForm, OrderEditForm, InventoryForm, InventoryStockInForm
 from settings import base
 
 # third party apps
@@ -109,13 +109,6 @@ class InventoryMenu(ListView):
         context['count'] = self.get_queryset().count()
         return context
 
-    def get_queryset(self):
-        queryset = Inventory.objects.all()
-
-        if self.request.GET.get('q'):
-            queryset = queryset.filter(product=self.request.GET.get('q'))
-        return queryset
-
 
 class InventoryCreateView(SuccessMessageMixin, AjaxCreateView):
     form_class = InventoryForm
@@ -131,6 +124,13 @@ class InventoryUpdateView(SuccessMessageMixin, AjaxUpdateView):
     form_class = InventoryForm
     model = Inventory
     success_message = "Successfully updated this product."
+    pk_url_kwarg = 'inventory_id'
+
+
+class InventoryStockInView(SuccessMessageMixin, AjaxUpdateView):
+    form_class = InventoryStockInForm
+    model = Inventory
+    message_message = "Successfully added stock in in this product."
     pk_url_kwarg = 'inventory_id'
 # FM app views ends here
 
