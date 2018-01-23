@@ -11,7 +11,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth import (login as auth_login, logout as auth_logout, authenticate)
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.db.models import Count, ExpressionWrapper, F
+from django.db.models import Count, ExpressionWrapper, F, Sum
 
 from django.shortcuts import render
 from django.views.generic import (
@@ -132,6 +132,11 @@ class InventoryStockInView(SuccessMessageMixin, AjaxUpdateView):
     model = Inventory
     message_message = "Successfully added stock in in this product."
     pk_url_kwarg = 'inventory_id'
+
+    @property
+    def total(self):
+        return self.stock_in + self.balance
+
 # FM app views ends here
 
 
@@ -166,12 +171,6 @@ class LogoutView(View):
         auth_logout(request)
         messages.success(request, 'Your account has been logout successfully.')
         return redirect(reverse_lazy('ordering:login'))
-
-
-class InventoryForm(ModelForm):
-    class Meta:
-        model = Inventory
-        fields = ['date', 'product', 'stock_in', 'stock_out', 'balance', 'particulars']
 
 
 def inventory_detail(request, inventory_id):

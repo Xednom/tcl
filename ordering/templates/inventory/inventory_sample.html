@@ -29,7 +29,7 @@
                 {% if all_inventorys %}
                 {% for inventory in all_inventorys %}
                 <tr>
-                  <td>{{ inventory.product }}</a></td>
+                  <td>{{ inventory.product }}</td>
                   <td>{{ inventory.stock_in }}</td>
                   <td>{{ inventory.stock_out }}</td>
                   <td>{{ inventory.balance }}</td>
@@ -39,6 +39,7 @@
                     <a href="{% url 'ordering:delete_inventory' inventory.id %}" class="fm-delete btn btn-danger glyphicon glyphicon-trash btn-sm" data-fm-head="Delete this product?" data-fm-callback="reload"></a>
                     <a href="{% url 'ordering:update_inventory' inventory.id %}" class="fm-update btn btn-warning glyphicon glyphicon-edit btn-sm" data-fm-head="Update this product?" data-fm-callback="reload"></a>
                     <a href="{% url 'ordering:inventory_stock_in' inventory.id %}" class="fm-update btn btn-warning" data-fm-head="Add Stock In" data-fm-callback="reload">Stock In</a>
+                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Stock In</button>
 
                   </td>
                 </tr>

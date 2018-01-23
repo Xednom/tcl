@@ -337,3 +337,6 @@ class InventoryStockInForm(forms.ModelForm):
             'stock_in',
             'balance'
         )
+
+
+
