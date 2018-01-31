@@ -28,7 +28,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Order, Inventory
-from .forms import RegistrationForm, EditProfileForm, OrderForm, OrderEditForm, InventoryForm, InventoryStockInForm
+from .forms import RegistrationForm, EditProfileForm, OrderForm, OrderEditForm, InventoryForm, InventoryStockInForm, InventoryStockOutForm
 from settings import base
 
 # third party apps
@@ -133,9 +133,13 @@ class InventoryStockInView(SuccessMessageMixin, AjaxUpdateView):
     message_message = "Successfully added stock in in this product."
     pk_url_kwarg = 'inventory_id'
 
-    @property
-    def total(self):
-        return self.stock_in + self.balance
+
+class InventoryStockOutView(SuccessMessageMixin, AjaxUpdateView):
+    form_class = InventoryStockOutForm
+    model = Inventory
+    message_message = "Successfully added stock in in this product."
+    pk_url_kwarg = 'inventory_id'
+
 
 # FM app views ends here
 

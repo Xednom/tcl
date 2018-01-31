@@ -27,9 +27,8 @@ class Inventory(models.Model):
         template = '{0.product} {0.stock_in} {0.stock_out} {0.balance} {0.particulars}'
         return template.format(self)
 
-    @property
     def total(self):
-        return self.stock_in + self.balance
+        return self.stock_in - self.stock_out + self.balance
     # def image_tag(self):
         # return u'<img src="%s" />' % self.product_logo.url_125x125
     # image_tag.short_description = 'Image'

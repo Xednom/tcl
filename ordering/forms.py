@@ -338,5 +338,26 @@ class InventoryStockInForm(forms.ModelForm):
             'balance'
         )
 
+class InventoryStockOutForm(forms.ModelForm):
+    stock_out = forms.CharField(required=True, widget=forms.NumberInput(
+        attrs={
+            'class': 'form-control',
+            'type': 'number'
+        }
+    ))
 
+    balance = forms.CharField(required=True, widget=forms.NumberInput(
+        attrs={
+            'class': 'form-control',
+            'type': 'number'
+        }
+    ))
+
+    class Meta:
+        model = Inventory
+        fields = (
+            'product',
+            'stock_out',
+            'balance'
+        )
 

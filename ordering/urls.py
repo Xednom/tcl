@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^inventory-menu/$', permission_required('ordering.Inventorys')(views.InventoryMenu.as_view()), name='inventory_menu'),
     url(r'^inventory-detail/product_id=(?P<inventory_id>[0-9]+)/$', views.inventory_detail, name='inventory_detail'),
     url(r'^inventory-stock-in/product_id=(?P<inventory_id>[0-9]+)/$', views.InventoryStockInView.as_view(), name='inventory_stock_in'),
+    url(r'^inventory-stock-out/product_id=(?P<inventory_id>[0-9]+)/$', views.InventoryStockOutView.as_view(), name='inventory_stock_out'),
     url(r'^order-create/$', views.OrderCreateView.as_view(), name='order_create'),
     url(r'^order-update/order_id=(?P<order_id>[0-9]+)/$', views.OrderUpdateView.as_view(), name='order_update'),
     url(r'^order-delete/order_id=(?P<order_id>[0-9]+)/$', views.OrderDeleteView.as_view(), name='order_delete'),
