@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>TCL Ordering System</title>
+
+         <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+        <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body background="{% static 'img/TCL_order_page_background.jpg' %}">
+
+
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>TCL Ordering</h3>
+                    <strong>TCL</strong>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                    </button>
+                </div>
+                <ul class="list-unstyled components">
+
+                    <!--<li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-briefcase"></i>
+                            About
+                        </a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                            <i class="glyphicon glyphicon-duplicate"></i>
+                            Pages
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="#">Page 1</a></li>
+                            <li><a href="#">Page 2</a></li>
+                            <li><a href="#">Page 3</a></li>
+                        </ul>
+                    </li>-->
+                    {% if user.is_superuser %}
+                    <li>
+                        <a href="{% url 'ordering:detail' %}">
+                            <i class="glyphicon glyphicon-info-sign"></i>
+                            Dropship information
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ordering:inventory_menu' %}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                            Inventory information
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ordering:order_create' %}" class="fm-create" data-fm-head="Add new order" data-fm-callback="reload">
+                            <i class="glyphicon glyphicon-share"></i>
+                            Add order
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ordering:logout' %}">
+                            <i class="glyphicon glyphicon-log-out"></i>
+                            Logout
+                        </a>
+                    </li>
+                        {% elif user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'ordering:order_history' %}">
+                            <i class="glyphicon glyphicon-book"></i>
+                            History page
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ordering:order_create' %}" class="fm-create" data-fm-head="Add new order" data-fm-callback="reload">
+                            <i class="glyphicon glyphicon-share"></i>
+                            Add order
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ordering:logout' %}">
+                            <i class="glyphicon glyphicon-log-out"></i>
+                            Logout
+                        </a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+            {% block body %}
+                {% endblock %}
+                <!--<nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Toggle Sidebar</span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>-->
+
+            </div>
+        </div>
+        {% include "modal/modal.html" %}
+        <script type="text/javascript">
+            $(function() {
+                $.fm({debug: true});
+            });
+        </script>
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>
+    </body>
+</html>

@@ -56,7 +56,7 @@ class DetailView(ListView):
     context_object_name = "all_order"
     paginate_by = 10
 
-    def get_context_date(self, **kwargs):
+    def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
         context['count'] = self.get_queryset().count()
         return context
@@ -139,7 +139,6 @@ class InventoryStockOutView(SuccessMessageMixin, AjaxUpdateView):
     model = Inventory
     message_message = "Successfully added stock in in this product."
     pk_url_kwarg = 'inventory_id'
-
 
 # FM app views ends here
 

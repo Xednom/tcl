@@ -1,21 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'dashboard/dashboard_new.html' %}
 {% block head %}<title>Dropship details</title>{% endblock %}
 {% block body %}
 <div class="container detail-container">
-      <div class="panel panel-default">
-        <div class="panel panel-header">
+      <div class="panel panel-info" style="overflow-x:auto;">
+        <div class="panel panel-heading">
           <div class="row row-button" style="padding-left: 25px;">
             <h3>Order Informations</h3>
-          <a href="{% url 'ordering:order_create' %}" class="fm-create btn btn-primary" data-fm-head="Add new order" data-fm-callback="reload">Create new</a>
+          </div>
+        </div>
+        <div class="panel-body">
+        <a href="{% url 'ordering:order_create' %}" class="fm-create btn btn-primary" data-fm-head="Add new order" data-fm-callback="reload">Create new</a>
               <form method="GET">{% csrf_token %}
                 <div class="form-group search-group">
                     <input type="search" class="input-medium search-query" autocomplete="off" placeholder="Search last name..." name="q">
                     <button type="submit" class="btn">Search</button>
                 </div>
             </form>
-          </div>
-        </div>
-        <div class="panel-body">
           {% include 'messages/messages.html' %}
           <ul>
             <div class="table-responsive">
